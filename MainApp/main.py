@@ -1,4 +1,3 @@
-from unicodedata import name
 import cv2
 from random import randint
 from kivy.app import App
@@ -83,22 +82,29 @@ Builder.load_string("""
             
             Button:
                 text:'Guardar'
+
 <ScrapScreen>
     GridLayout:
-        rows:2
+        rows:3
 
         GridLayout:
-            cols:2
+            cols:3
             Label:
                 text:'Formato .csv:'
 
             TextInput:
                 id:format
+            
 
+
+           
+    
         Button:
             text:'Scrap'
             on_press: root.scrap()
 """)
+
+
 
 class LoginScreen(Screen):
     def sm_u(self):
@@ -162,6 +168,7 @@ class NewFormatScreen(Screen):
         f.close()
     
         self.manager.current = 'menu'
+
 
 class ScrapScreen(Screen):
     def scrap(self):
@@ -234,7 +241,7 @@ class MainApp(App):
         sm.add_widget(NewFormatScreen(name='new_format'))
         sm.add_widget(ScrapScreen(name='scrap'))
         
-        sm.current = 'scrap'
+        sm.current = 'menu'
 
         return sm
 
